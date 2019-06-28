@@ -33,6 +33,10 @@ class Dog
     dog = Dog.new(attributes)
     dog.save
     dog
+  end
+  
+  def self.find_by_id
+    
   end 
   
 end 
