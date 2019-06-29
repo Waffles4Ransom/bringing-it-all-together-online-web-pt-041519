@@ -1,3 +1,4 @@
+require 'pry'
 class Dog 
   attr_accessor :name, :breed, :id 
   
@@ -69,6 +70,7 @@ class Dog
     new_dog.name = row[1]
     new_dog.breed = row[2]
     new_dog
+    binding.pry 
   end 
   
   def self.find_by_name(name)
