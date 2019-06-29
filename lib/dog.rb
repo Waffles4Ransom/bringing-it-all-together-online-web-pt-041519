@@ -30,6 +30,7 @@ class Dog
         INSERT INTO dogs (name, breed)
         VALUES (?,?)
         SQL
+        
       DB[:conn].execute(sql, self.name, self.breed)
       @id = DB[:conn].execute("SELECT last_insert_rowid() FROM dogs")[0][0]
     end
@@ -47,11 +48,8 @@ class Dog
   end 
   
   def self.find_by_id(id)
-    sql = <<-SQL 
-      SELECT * FROM dogs 
-      WHERE id = ?
-      SQL
-      
+    sql = "SELECT * FROM dogs WHERE id = ?"
+    
     dog = DB[:conn].execute(sql, id).flatten
     new_from_db(dog)
   end 
@@ -62,7 +60,7 @@ class Dog
       dog_data = dog[0]
       dog = Dog.new(dog_data[0], dog_data[1], dog_data[2])
     else 
-      dog = self.create(name: name, breed: breed)
+      dog = self.create()
     end 
     
     dog
