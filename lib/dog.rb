@@ -73,7 +73,7 @@ class Dog
     sql = "SELECT * FROM dogs WHERE name = ? LIMIT 1"
     
     dog = DB[:conn].execute(sql,name).flatten
-    
+    new_from_db(dog)
   end 
   
   def update 
