@@ -30,6 +30,7 @@ class Dog
         VALUES (?,?)
         SQL
       DB[:conn].execute(sql, self.name, self.breed)
+      @id = 
   end 
   
   def self.create(attributes)
