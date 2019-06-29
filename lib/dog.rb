@@ -2,8 +2,8 @@ require 'pry'
 class Dog 
   attr_accessor :name, :breed, :id 
   
-  def initialize(id: nil, name:, breed:)
-    @id, @name, @breed = id, name, breed
+  def initialize(attributes)
+    attributes.each {|k,v| self.send 
   end 
   
   def self.create_table
