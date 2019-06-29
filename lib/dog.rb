@@ -2,8 +2,8 @@ require 'pry'
 class Dog 
   attr_accessor :name, :breed, :id 
   
-  def initialize(attributes)
-    attributes.each {|k,v| self.send("#{k}=", v)}
+  def initialize(id: nil, name:, breed:)
+    @id, @name, @breed = id, name, breed
   end 
   
   def self.create_table
@@ -66,8 +66,7 @@ class Dog
   end 
   
   def self.new_from_db(attributes)
-    new_dog = self.new(attributes)
-    new_dog
+    Dog.new(id: attributes[0], name: attributes[1], breed: attributes[2])
   end 
   
   def self.find_by_name(name)
