@@ -42,6 +42,10 @@ class Dog
     dog
   end
   
+   def self.new_from_db(attributes)
+    Dog.new(id: attributes[0], name: attributes[1], breed: attributes[2])
+  end 
+  
   def self.find_by_id(id)
     sql = <<-SQL 
       SELECT * FROM dogs 
@@ -63,10 +67,6 @@ class Dog
     end 
     
     dog
-  end 
-  
-  def self.new_from_db(attributes)
-    Dog.new(id: attributes[0], name: attributes[1], breed: attributes[2])
   end 
   
   def self.find_by_name(name)
